@@ -187,6 +187,7 @@ st.pyplot(fig)
 st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
+st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 
 
 
