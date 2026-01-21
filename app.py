@@ -93,11 +93,11 @@ st.info(f"Sum of weights = {total_weight:.2f}")
 
 # 🔴 تنبيه إذا المجموع أكبر من 1
 if total_weight > 1:
-    st.error("⚠️ The sum of weights exceeds 1. Please adjust the values.")
+    st.error("⚠️ sum of weights exceeds 1. Please adjust the values.")
 
 # 🟢 رسالة نجاح إذا المجموع صحيح
 elif abs(total_weight - 1) < 0.01:
-    st.success("✅ The sum of weights is correct (≈ 1).")
+    st.success("✅ sum of weights is correct (≈ 1).")
 
 # تطبيع الأوزان فقط إذا كانت منطقية
 if total_weight > 0:
@@ -188,6 +188,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
