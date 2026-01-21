@@ -86,16 +86,25 @@ for j in range(n_criteria):
     weights_scoring.append(w)
 
 weights_scoring = np.array(weights_scoring)
+total_weight = weights_scoring.sum()
 
-# Normalization (security)
-if weights_scoring.sum() != 0:
-    weights_scoring = weights_scoring / weights_scoring.sum()
+# عرض المجموع
+st.info(f"Sum of weights = {total_weight:.2f}")
 
-# Scoring calculation
+# 🔴 تنبيه إذا المجموع أكبر من 1
+if total_weight > 1:
+    st.error("⚠️ The sum of weights exceeds 1. Please adjust the values.")
+
+# 🟢 رسالة نجاح إذا المجموع صحيح
+elif abs(total_weight - 1) < 0.01:
+    st.success("✅ The sum of weights is correct (≈ 1).")
+
+# تطبيع الأوزان فقط إذا كانت منطقية
+if total_weight > 0:
+    weights_scoring = weights_scoring / total_weight
+
+# حساب النتيجة
 score_scoring = np.dot(scores_data, weights_scoring)
-
-st.info(f"Sum of weights = {weights_scoring.sum():.2f}")
-
 
 # AHP Method Score
 score_ahp_final = np.dot(scores_data, w_ahp)
@@ -178,6 +187,7 @@ st.pyplot(fig)
 st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
+
 
 
 
