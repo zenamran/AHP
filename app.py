@@ -53,7 +53,7 @@ for i in range(n_suppliers):
     with st.expander(f"Scores for {supplier_names[i]}"):
         cols = st.columns(n_criteria)
         for j in range(n_criteria):
-            scores_data[i, j] = cols[j].number_input(f"{criteria_names[j]}", 0.0, 10.0, 7.0, key=f"S_{i}_{j}")
+            scores_data[i, j] = cols[j].number_input(f"{criteria_names[j]}", 0.0, 10.0, 0.0, key=f"S_{i}_{j}")
 
 # --- 5. MATHEMATICAL CALCULATIONS ---
 # AHP Weights & Consistency
@@ -178,5 +178,6 @@ st.pyplot(fig)
 st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
+
 
 
