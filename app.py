@@ -67,9 +67,35 @@ RI_table = {1:0, 2:0, 3:0.58, 4:0.90, 5:1.12, 6:1.24, 7:1.32, 8:1.41, 9:1.45, 10
 CI = (max_eig - n_criteria) / (n_criteria - 1)
 CR = CI / RI_table[n_criteria] if n_criteria > 2 else 0
 
-# Scoring Method (Using Uniform Weights for the criteria)
-weights_scoring = np.ones(n_criteria) / n_criteria
+# --- SCORING WEIGHTS INPUT ---
+st.divider()
+st.subheader("⚖️ Weights for Scoring Method (Must sum to 1)")
+
+weights_scoring = []
+cols = st.columns(n_criteria)
+
+for j in range(n_criteria):
+    w = cols[j].number_input(
+        f"Weight of {criteria_names[j]}",
+        min_value=0.0,
+        max_value=1.0,
+        value=round(1/n_criteria, 2),
+        step=0.01,
+        key=f"W_scoring_{j}"
+    )
+    weights_scoring.append(w)
+
+weights_scoring = np.array(weights_scoring)
+
+# Normalization (security)
+if weights_scoring.sum() != 0:
+    weights_scoring = weights_scoring / weights_scoring.sum()
+
+# Scoring calculation
 score_scoring = np.dot(scores_data, weights_scoring)
+
+st.info(f"Sum of weights = {weights_scoring.sum():.2f}")
+
 
 # AHP Method Score
 score_ahp_final = np.dot(scores_data, w_ahp)
@@ -103,8 +129,17 @@ with res_col2:
 
 # --- 7. SENSITIVITY ANALYSIS CHART ---
 st.divider()
-st.subheader("📈 Sensitivity Analysis (Criterion 1)")
-st.write(f"Effect of varying the weight of '{criteria_names[0]}' on final scores.")
+st.subheader("📈 Sensitivity Analysis")
+
+selected_criterion = st.selectbox(
+    "Select the criterion to analyze",
+    criteria_names
+)
+
+crit_index = criteria_names.index(selected_criterion)
+
+st.write(f"Effect of varying the weight of '{selected_criterion}' on final scores.")
+
 
 variation = np.linspace(0.05, 0.95, 20)
 sens_results = []
@@ -112,18 +147,23 @@ sens_results = []
 for v in variation:
     # Adjust weights proportionally
     temp_w = np.copy(w_ahp)
-    temp_w[0] = v
-    # Normalize other weights
-    sum_others = temp_w[1:].sum()
-    if sum_others > 0:
-        temp_w[1:] = (temp_w[1:] / sum_others) * (1 - v)
+temp_w = np.copy(w_ahp)
+temp_w[crit_index] = v
+
+# Redistribute remaining weights
+others = [i for i in range(n_criteria) if i != crit_index]
+sum_others = temp_w[others].sum()
+
+if sum_others > 0:
+    temp_w[others] = (temp_w[others] / sum_others) * (1 - v)
+
     sens_results.append(np.dot(scores_data, temp_w))
 
 fig, ax = plt.subplots(figsize=(10, 5))
 for i in range(n_suppliers):
     ax.plot(variation * 100, [s[i] for s in sens_results], label=supplier_names[i], linewidth=2)
 
-ax.set_xlabel(f"Weight of {criteria_names[0]} (%)")
+ax.set_xlabel(f"Weight of {selected_criterion} (%)")
 ax.set_ylabel("Total Score")
 ax.set_title("Sensitivity Analysis Graph")
 ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
@@ -131,4 +171,5 @@ ax.grid(True, linestyle='--', alpha=0.7)
 st.pyplot(fig)
 
 st.write("---")
+
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
