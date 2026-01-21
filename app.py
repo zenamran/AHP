@@ -128,6 +128,7 @@ with res_col2:
     st.dataframe(df_results.style.highlight_max(axis=0, color='lightgreen'))
 
 # --- 7. SENSITIVITY ANALYSIS CHART ---
+# --- 7. SENSITIVITY ANALYSIS ---
 st.divider()
 st.subheader("📈 Sensitivity Analysis")
 
@@ -140,36 +141,41 @@ crit_index = criteria_names.index(selected_criterion)
 
 st.write(f"Effect of varying the weight of '{selected_criterion}' on final scores.")
 
-
 variation = np.linspace(0.05, 0.95, 20)
 sens_results = []
 
 for v in variation:
-    # Adjust weights proportionally
     temp_w = np.copy(w_ahp)
-temp_w = np.copy(w_ahp)
-temp_w[crit_index] = v
+    temp_w[crit_index] = v
 
-# Redistribute remaining weights
-others = [i for i in range(n_criteria) if i != crit_index]
-sum_others = temp_w[others].sum()
+    # إعادة توزيع الأوزان على باقي المعايير
+    others = [i for i in range(n_criteria) if i != crit_index]
+    sum_others = temp_w[others].sum()
 
-if sum_others > 0:
-    temp_w[others] = (temp_w[others] / sum_others) * (1 - v)
+    if sum_others > 0:
+        temp_w[others] = (temp_w[others] / sum_others) * (1 - v)
 
+    # نحفظ نتيجة كل الموردين عند هذا الوزن
     sens_results.append(np.dot(scores_data, temp_w))
 
+sens_results = np.array(sens_results)  # الشكل يصبح (20, n_suppliers)
+
+# الرسم البياني
 fig, ax = plt.subplots(figsize=(10, 5))
+
 for i in range(n_suppliers):
-    ax.plot(variation * 100, [s[i] for s in sens_results], label=supplier_names[i], linewidth=2)
+    ax.plot(variation * 100, sens_results[:, i], label=supplier_names[i], linewidth=2)
 
 ax.set_xlabel(f"Weight of {selected_criterion} (%)")
 ax.set_ylabel("Total Score")
 ax.set_title("Sensitivity Analysis Graph")
 ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
 ax.grid(True, linestyle='--', alpha=0.7)
+
 st.pyplot(fig)
+
 
 st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
+
