@@ -11,8 +11,8 @@ st.subheader("Integrated AHP & Weighted Scoring Model")
 # --- 1. SIDEBAR SETTINGS ---
 with st.sidebar:
     st.header("⚙️ General Configuration")
-    n_suppliers = st.number_input("Number of Suppliers", min_value=2, max_value=10, value=5)
-    n_criteria = st.number_input("Number of Criteria", min_value=2, max_value=10, value=7)
+    n_suppliers = st.number_input("Number of Suppliers", min_value=2, max_value=10, value=2)
+    n_criteria = st.number_input("Number of Criteria", min_value=2, max_value=10, value=2)
     
     st.divider()
     st.header("⚖️ Method Weighting")
@@ -121,7 +121,7 @@ with res_col2:
     st.subheader("Comparison Table")
     df_results = pd.DataFrame({
         "Supplier": supplier_names,
-        "Scoring Score": score_scoring,
+        "Scoring Weighted": score_scoring,
         "AHP Score": score_ahp_final,
         "Combined Final Score": final_score
     }).sort_values(by="Combined Final Score", ascending=False)
@@ -178,4 +178,5 @@ st.pyplot(fig)
 st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
+
 
