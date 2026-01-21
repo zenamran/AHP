@@ -127,17 +127,35 @@ with res_col1:
         st.error("Inconsistent Matrix ❌ (Please revise AHP values)")
 
 with res_col2:
-    st.subheader("Comparison Table")
-    df_results = pd.DataFrame({
-        "Supplier": supplier_names,
-        "Scoring Weighted": score_scoring,
-        "AHP Score": score_ahp_final,
-        "Combined Final Score": final_score
-    }).sort_values(by="Combined Final Score", ascending=False)
-    st.dataframe(df_results.style.highlight_max(axis=0, color='lightgreen'))
+
+st.subheader("Comparison Table")
+st.subheader("📋 Scoring Method Results")
+
+df_scoring = pd.DataFrame({
+    "Supplier": supplier_names,
+    "Score": score_scoring
+}).sort_values(by="Score", ascending=False)
+
+st.dataframe(df_scoring, use_container_width=True)
+st.subheader("📋 AHP Method Results")
+
+df_ahp = pd.DataFrame({
+    "Supplier": supplier_names,
+    "Score": score_ahp_final
+}).sort_values(by="Score", ascending=False)
+
+st.dataframe(df_ahp, use_container_width=True)
+st.subheader("🏆 Final Combined Ranking")
+
+df_final = pd.DataFrame({
+    "Supplier": supplier_names,
+    "Final Score": final_score
+}).sort_values(by="Final Score", ascending=False)
+
+st.dataframe(df_final, use_container_width=True)
+
 
 # --- 7. SENSITIVITY ANALYSIS CHART ---
-# --- 7. SENSITIVITY ANALYSIS ---
 st.divider()
 st.subheader("📈 Sensitivity Analysis")
 
@@ -188,6 +206,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
