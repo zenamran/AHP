@@ -127,6 +127,7 @@ with res_col1:
         st.error("Inconsistent Matrix ❌ (Please revise AHP values)")
 
 with res_col2:
+    st.subheader("Comparison Table")
 st.subheader("📋 Scoring Method Results")
 
 df_scoring = pd.DataFrame({
@@ -204,6 +205,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
