@@ -133,7 +133,7 @@ for i in range(n_suppliers):
     ax.plot(variation * 100, sens_results[:, i], label=supplier_names[i], linewidth=2)
 
 ax.set_xlabel(f"Weight of {selected_criterion} (%)")
-ax.set_ylabel("Total Score")
+ax.set_ylabel("Score")
 ax.set_title("Sensitivity Analysis Graph")
 ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
 ax.grid(True, linestyle='--', alpha=0.7)
@@ -145,6 +145,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
