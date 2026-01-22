@@ -14,11 +14,11 @@ with st.sidebar:
     n_suppliers = st.number_input("Number of Suppliers", min_value=2, max_value=10, value=2)
     n_criteria = st.number_input("Number of Criteria", min_value=2, max_value=10, value=2)
     
-    st.divider()
-    st.header("⚖️ Method Weighting")
-    w_scoring_ratio = st.slider("Scoring Method Weight", 0.0, 1.0, 0.5)
-    w_ahp_ratio = 1.0 - w_scoring_ratio
-    st.info(f"Final Score = ({w_scoring_ratio} × Scoring) + ({w_ahp_ratio:.1f} × AHP)")
+  #  st.divider()
+  #  st.header("⚖️ Method Weighting")
+  #  w_scoring_ratio = st.slider("Scoring Method Weight", 0.0, 1.0, 0.5)
+  #  w_ahp_ratio = 1.0 - w_scoring_ratio
+  #  st.info(f"Final Score = ({w_scoring_ratio} × Scoring) + ({w_ahp_ratio:.1f} × AHP)")
 
 # --- 2. NAMES INPUT ---
 col1, col2 = st.columns(2)
@@ -160,6 +160,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
