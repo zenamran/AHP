@@ -131,7 +131,7 @@ st.subheader("📋 Criteria Weight AHP Results")
 df_scoring = pd.DataFrame({
     "Criteria": criteria_names,
     "Weight": w_ahp
-}).sort_values(by="Score", ascending=False)
+#}).sort_values(by="Score", ascending=False)
 
 st.dataframe(df_scoring, use_container_width=True)
 st.subheader("🏆 AHP-Based Weighted Scoring Results")
@@ -203,6 +203,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
