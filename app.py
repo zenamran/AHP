@@ -141,7 +141,7 @@ df_ahp = pd.DataFrame({
     "Score": score_ahp_final
 }).sort_values(by="Score", ascending=False)
 
-#st.dataframe(df_ahp, use_container_width=True)
+st.dataframe(df_ahp, use_container_width=True)
 #st.subheader("🏆 Final Combined Ranking")
 
 #df_final = pd.DataFrame({
@@ -203,6 +203,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
