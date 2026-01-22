@@ -126,30 +126,30 @@ with res_col1:
     else:
         st.error("Inconsistent Matrix ❌ (Please revise AHP values)")
 
-st.subheader("📋 Scoring Method Results")
+st.subheader("📋 Criteria Weight AHP Results")
 
 df_scoring = pd.DataFrame({
-    "Supplier": supplier_names,
-    "Score": score_scoring
+    "Criteria": criteria_names,
+    "Weight": w_ahp
 }).sort_values(by="Score", ascending=False)
 
 st.dataframe(df_scoring, use_container_width=True)
-st.subheader("📋 AHP Method Results")
+st.subheader("🏆 AHP-Based Weighted Scoring Results")
 
 df_ahp = pd.DataFrame({
     "Supplier": supplier_names,
     "Score": score_ahp_final
 }).sort_values(by="Score", ascending=False)
 
-st.dataframe(df_ahp, use_container_width=True)
-st.subheader("🏆 Final Combined Ranking")
+#st.dataframe(df_ahp, use_container_width=True)
+#st.subheader("🏆 Final Combined Ranking")
 
-df_final = pd.DataFrame({
-    "Supplier": supplier_names,
-    "Final Score": final_score
-}).sort_values(by="Final Score", ascending=False)
+#df_final = pd.DataFrame({
+#    "Supplier": supplier_names,
+#    "Final Score": final_score
+#}).sort_values(by="Final Score", ascending=False)
 
-st.dataframe(df_final, use_container_width=True)
+#st.dataframe(df_final, use_container_width=True)
 
 
 # --- 7. SENSITIVITY ANALYSIS CHART ---
@@ -203,6 +203,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
