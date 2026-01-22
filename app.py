@@ -100,17 +100,17 @@ CR = CI / RI_table[n_criteria] if n_criteria > 2 else 0
 #    st.success("✅ sum of weights is correct (≈ 1).")
 
 # تطبيع الأوزان فقط إذا كانت منطقية
-if total_weight > 0:
-    weights_scoring = weights_scoring / total_weight
+#if total_weight > 0:
+#    weights_scoring = weights_scoring / total_weight
 
 # حساب النتيجة
-score_scoring = np.dot(scores_data, weights_scoring)
+#score_scoring = np.dot(scores_data, weights_scoring)
 
 # AHP Method Score
 score_ahp_final = np.dot(scores_data, w_ahp)
 
 # Hybrid Final Score
-final_score = (score_scoring * w_scoring_ratio) + (score_ahp_final * w_ahp_ratio)
+#final_score = (score_scoring * w_scoring_ratio) + (score_ahp_final * w_ahp_ratio)
 
 # --- 6. RESULTS & OUTPUT ---
 st.divider()
@@ -203,6 +203,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
