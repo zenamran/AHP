@@ -142,14 +142,14 @@ df_ahp = pd.DataFrame({
 }).sort_values(by="Score", ascending=False)
 
 st.dataframe(df_ahp, use_container_width=True)
-#st.subheader("🏆 Final Combined Ranking")
+st.subheader("🏆 Final Combined Ranking")
 
-#df_final = pd.DataFrame({
-#    "Supplier": supplier_names,
-#    "Final Score": final_score
-#}).sort_values(by="Final Score", ascending=False)
+df_final = pd.DataFrame({
+    "Supplier": supplier_names,
+    "Final Score": final_score
+}).sort_values(by="Final Score", ascending=False)
 
-#st.dataframe(df_final, use_container_width=True)
+st.dataframe(df_final, use_container_width=True)
 
 
 # --- 7. SENSITIVITY ANALYSIS CHART ---
@@ -203,6 +203,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
