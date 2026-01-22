@@ -68,43 +68,43 @@ CI = (max_eig - n_criteria) / (n_criteria - 1)
 CR = CI / RI_table[n_criteria] if n_criteria > 2 else 0
 
 # --- SCORING WEIGHTS INPUT ---
-st.divider()
-st.subheader("⚖️ Weights for Scoring Method (Must sum to 1)")
+#st.divider()
+#st.subheader("⚖️ Weights for Scoring Method (Must sum to 1)")
 
-weights_scoring = []
-cols = st.columns(n_criteria)
+#weights_scoring = []
+#cols = st.columns(n_criteria)
 
-for j in range(n_criteria):
-    w = cols[j].number_input(
-        f"Weight of {criteria_names[j]}",
-        min_value=0.0,
-        max_value=1.0,
-        value=round(1/n_criteria, 2),
-        step=0.01,
-        key=f"W_scoring_{j}"
-    )
-    weights_scoring.append(w)
+#for j in range(n_criteria):
+#    w = cols[j].number_input(
+#        f"Weight of {criteria_names[j]}",
+#        min_value=0.0,
+#        max_value=1.0,
+#        value=round(1/n_criteria, 2),
+#        step=0.01,
+#        key=f"W_scoring_{j}"
+#    )
+#    weights_scoring.append(w)
 
-weights_scoring = np.array(weights_scoring)
-total_weight = weights_scoring.sum()
+#weights_scoring = np.array(weights_scoring)
+#total_weight = weights_scoring.sum()
 
 # عرض المجموع
-st.info(f"Sum of weights = {total_weight:.2f}")
+#st.info(f"Sum of weights = {total_weight:.2f}")
 
 # 🔴 تنبيه إذا المجموع أكبر من 1
-if total_weight > 1:
-    st.error("⚠️ sum of weights exceeds 1. Please adjust the values.")
+#if total_weight > 1:
+#    st.error("⚠️ sum of weights exceeds 1. Please adjust the values.")
 
 # 🟢 رسالة نجاح إذا المجموع صحيح
-elif abs(total_weight - 1) < 0.01:
-    st.success("✅ sum of weights is correct (≈ 1).")
+#elif abs(total_weight - 1) < 0.01:
+#    st.success("✅ sum of weights is correct (≈ 1).")
 
 # تطبيع الأوزان فقط إذا كانت منطقية
-if total_weight > 0:
-    weights_scoring = weights_scoring / total_weight
+#if total_weight > 0:
+#    weights_scoring = weights_scoring / total_weight
 
 # حساب النتيجة
-score_scoring = np.dot(scores_data, weights_scoring)
+#score_scoring = np.dot(scores_data, weights_scoring)
 
 # AHP Method Score
 score_ahp_final = np.dot(scores_data, w_ahp)
@@ -203,6 +203,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
