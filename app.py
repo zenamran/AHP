@@ -147,7 +147,7 @@ st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 
 
-# ===== PROFESSIONAL UI THEME (Light / Dark) =====
+# ===== GREEN & ORANGE PROFESSIONAL THEME =====
 
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
@@ -163,14 +163,19 @@ if st.session_state.dark_mode:
 
     h1, h2, h3, h4 { color: #F8FAFC; }
 
-    .stSidebar { background-color: #1E293B; }
+    .stSidebar { background-color: #064E3B; }
 
     .stButton>button {
-        background-color: #2563EB;
+        background-color: #16A34A;
         color: white;
         border-radius: 12px;
         font-weight: 600;
         padding: 8px 18px;
+    }
+
+    .stButton>button:hover {
+        background-color: #F97316;
+        color: white;
     }
 
     .stDataFrame, .stTable {
@@ -182,6 +187,7 @@ if st.session_state.dark_mode:
         background-color: #1E293B;
         padding: 15px;
         border-radius: 14px;
+        border-left: 6px solid #16A34A;
     }
 
     div[data-testid="stExpander"] {
@@ -196,16 +202,21 @@ else:
     <style>
     .stApp { background-color: #F8FAFC; color: #0F172A; }
 
-    h1, h2, h3, h4 { color: #0F172A; }
+    h1, h2, h3, h4 { color: #064E3B; }
 
-    .stSidebar { background-color: #E2E8F0; }
+    .stSidebar { background-color: #DCFCE7; }
 
     .stButton>button {
-        background-color: #2563EB;
+        background-color: #16A34A;
         color: white;
         border-radius: 12px;
         font-weight: 600;
         padding: 8px 18px;
+    }
+
+    .stButton>button:hover {
+        background-color: #F97316;
+        color: white;
     }
 
     .stDataFrame, .stTable {
@@ -217,6 +228,7 @@ else:
         background-color: white;
         padding: 15px;
         border-radius: 14px;
+        border-left: 6px solid #F97316;
     }
 
     div[data-testid="stExpander"] {
@@ -225,6 +237,7 @@ else:
     }
     </style>
     """, unsafe_allow_html=True)
+
 
 
 
