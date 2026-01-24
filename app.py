@@ -147,6 +147,36 @@ st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 
 
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(to right, #f8f9fa, #e9f2ff);
+}
+
+h1 {
+    color: #003366;
+}
+
+.stSidebar {
+    background-color: #003366;
+    color: white;
+}
+
+.stButton>button {
+    background-color: #0066cc;
+    color: white;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.stMetric {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 
 
