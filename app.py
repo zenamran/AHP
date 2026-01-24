@@ -279,19 +279,19 @@ def generate_sonatrach_pv(df_results):
 
     styles = getSampleStyleSheet()
 
-title = ParagraphStyle(
-    name="Title",
-    fontName="DejaVu-Bold",
-    fontSize=16,
-    spaceAfter=20
-)
 
+    title = ParagraphStyle(
+       name="Title",
+       fontName="DejaVu-Bold",
+       fontSize=16,
+       spaceAfter=20
+    )
 
-normal = ParagraphStyle(
-    name="Normal",
-    fontName="DejaVu",
-    fontSize=11
-)
+    normal = ParagraphStyle(
+      name="Normal",
+      fontName="DejaVu",
+      fontSize=11
+    )
 
     elements = []
 
@@ -384,6 +384,7 @@ st.download_button(
     file_name="PV_Evaluation_SONATRACH.pdf",
     mime="application/pdf"
 )
+
 
 
 
