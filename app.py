@@ -2,71 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-# --- DARK MODE TOGGLE ---
-if "dark_mode" not in st.session_state:
-    st.session_state.dark_mode = False
-
-st.sidebar.divider()
-st.sidebar.subheader("🎨 Appearance")
-
-toggle = st.sidebar.checkbox("Dark Mode", value=st.session_state.dark_mode)
-
-st.session_state.dark_mode = toggle
-
-# CSS حسب الوضع
-if st.session_state.dark_mode:
-    st.markdown("""
-    <style>
-    .stApp {
-        background-color: #0e1117;
-        color: white;
-    }
-
-    h1, h2, h3, h4, h5 {
-        color: #fafafa;
-    }
-
-    .stSidebar {
-        background-color: #161b22;
-    }
-
-    .stButton > button {
-        background-color: #238636;
-        color: white;
-        border-radius: 10px;
-    }
-
-    .stDataFrame {
-        background-color: #161b22;
-    }
-
-    </style>
-    """, unsafe_allow_html=True)
-
-else:
-    st.markdown("""
-    <style>
-    .stApp {
-        background-color: #f9f9f9;
-        color: black;
-    }
-
-    h1, h2, h3, h4, h5 {
-        color: #003366;
-    }
-
-    .stSidebar {
-        background-color: #e6eef8;
-    }
-
-    .stButton > button {
-        background-color: #1f77b4;
-        color: white;
-        border-radius: 10px;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
 
 st.set_page_config(page_title="Vendor Selection Tool", layout="wide")
 
@@ -212,35 +147,84 @@ st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 
 
-st.markdown("""
-<style>
-.stApp {
-    background: linear-gradient(to right, #f8f9fa, #e9f2ff);
-}
+# ===== PROFESSIONAL UI THEME (Light / Dark) =====
 
-h1 {
-    color: #003366;
-}
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
 
-.stSidebar {
-    background-color: #003366;
-    color: white;
-}
+st.sidebar.divider()
+st.sidebar.subheader("🎨 Appearance")
+st.session_state.dark_mode = st.sidebar.toggle("Dark Mode", value=st.session_state.dark_mode)
 
-.stButton>button {
-    background-color: #0066cc;
-    color: white;
-    border-radius: 12px;
-    font-weight: bold;
-}
+if st.session_state.dark_mode:
+    st.markdown("""
+    <style>
+    .stApp { background-color: #0F172A; color: #E2E8F0; }
 
-.stMetric {
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
-}
-</style>
-""", unsafe_allow_html=True)
+    h1, h2, h3, h4 { color: #F8FAFC; }
+
+    .stSidebar { background-color: #1E293B; }
+
+    .stButton>button {
+        background-color: #2563EB;
+        color: white;
+        border-radius: 12px;
+        font-weight: 600;
+        padding: 8px 18px;
+    }
+
+    .stDataFrame, .stTable {
+        background-color: #1E293B;
+        border-radius: 12px;
+    }
+
+    .stMetric {
+        background-color: #1E293B;
+        padding: 15px;
+        border-radius: 14px;
+    }
+
+    div[data-testid="stExpander"] {
+        background-color: #1E293B;
+        border-radius: 12px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+else:
+    st.markdown("""
+    <style>
+    .stApp { background-color: #F8FAFC; color: #0F172A; }
+
+    h1, h2, h3, h4 { color: #0F172A; }
+
+    .stSidebar { background-color: #E2E8F0; }
+
+    .stButton>button {
+        background-color: #2563EB;
+        color: white;
+        border-radius: 12px;
+        font-weight: 600;
+        padding: 8px 18px;
+    }
+
+    .stDataFrame, .stTable {
+        background-color: white;
+        border-radius: 12px;
+    }
+
+    .stMetric {
+        background-color: white;
+        padding: 15px;
+        border-radius: 14px;
+    }
+
+    div[data-testid="stExpander"] {
+        background-color: white;
+        border-radius: 12px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 
 
