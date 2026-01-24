@@ -295,7 +295,7 @@ st.caption("Developed by Zennani Amran / Zerguine Moussa.")
     #  leading=14
    # )
 
-    elements = []
+  #  elements = []
 
     # عنوان رسمي
   #  elements.append(Paragraph(
@@ -381,5 +381,6 @@ st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 #    file_name="PV_Evaluation_SONATRACH.pdf",
 #    mime="application/pdf"
 #)
+
 
 
