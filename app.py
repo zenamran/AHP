@@ -147,15 +147,33 @@ st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 
 
-# ===== GREEN & ORANGE PROFESSIONAL THEME =====
+# ================= PROFESSIONAL UI THEME =================
+import streamlit as st
 
 if "dark_mode" not in st.session_state:
     st.session_state.dark_mode = False
 
-st.sidebar.divider()
-st.sidebar.subheader("🎨 Appearance")
+# Toggle in sidebar
+st.sidebar.markdown("## 🎨 Appearance")
 st.session_state.dark_mode = st.sidebar.toggle("Dark Mode", value=st.session_state.dark_mode)
 
+# ---------- HEADER ----------
+st.markdown("""
+<div style="
+    background: linear-gradient(90deg, #16A34A, #F97316);
+    padding: 18px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;">
+    🚀 Decision Support System – Supplier Evaluation Dashboard
+</div>
+""", unsafe_allow_html=True)
+
+# ---------- THEME ----------
 if st.session_state.dark_mode:
     st.markdown("""
     <style>
@@ -163,37 +181,51 @@ if st.session_state.dark_mode:
 
     h1, h2, h3, h4 { color: #F8FAFC; }
 
-    .stSidebar { background-color: #064E3B; }
+    .stSidebar { background-color: #052E16; }
+
+    .block-container {
+        padding-top: 1.5rem;
+    }
+
+    .card {
+        background-color: #1E293B;
+        padding: 18px;
+        border-radius: 18px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        margin-bottom: 20px;
+    }
 
     .stButton>button {
-        background-color: #16A34A;
+        background: linear-gradient(135deg, #16A34A, #F97316);
         color: white;
-        border-radius: 12px;
+        border-radius: 14px;
         font-weight: 600;
-        padding: 8px 18px;
+        padding: 10px 22px;
+        border: none;
     }
 
     .stButton>button:hover {
-        background-color: #F97316;
-        color: white;
-    }
-
-    .stDataFrame, .stTable {
-        background-color: #1E293B;
-        border-radius: 12px;
+        opacity: 0.9;
+        transform: scale(1.02);
     }
 
     .stMetric {
         background-color: #1E293B;
-        padding: 15px;
-        border-radius: 14px;
+        padding: 18px;
+        border-radius: 18px;
         border-left: 6px solid #16A34A;
     }
 
     div[data-testid="stExpander"] {
         background-color: #1E293B;
-        border-radius: 12px;
+        border-radius: 16px;
     }
+
+    .stDataFrame {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
     </style>
     """, unsafe_allow_html=True)
 
@@ -206,37 +238,53 @@ else:
 
     .stSidebar { background-color: #DCFCE7; }
 
+    .block-container {
+        padding-top: 1.5rem;
+    }
+
+    .card {
+        background-color: white;
+        padding: 18px;
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
+
     .stButton>button {
-        background-color: #16A34A;
+        background: linear-gradient(135deg, #16A34A, #F97316);
         color: white;
-        border-radius: 12px;
+        border-radius: 14px;
         font-weight: 600;
-        padding: 8px 18px;
+        padding: 10px 22px;
+        border: none;
     }
 
     .stButton>button:hover {
-        background-color: #F97316;
-        color: white;
-    }
-
-    .stDataFrame, .stTable {
-        background-color: white;
-        border-radius: 12px;
+        opacity: 0.9;
+        transform: scale(1.02);
     }
 
     .stMetric {
         background-color: white;
-        padding: 15px;
-        border-radius: 14px;
+        padding: 18px;
+        border-radius: 18px;
         border-left: 6px solid #F97316;
     }
 
     div[data-testid="stExpander"] {
         background-color: white;
-        border-radius: 12px;
+        border-radius: 16px;
     }
+
+    .stDataFrame {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
     </style>
     """, unsafe_allow_html=True)
+
+
 
 
 
