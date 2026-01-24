@@ -9,6 +9,11 @@ from reportlab.lib import colors
 from reportlab.lib.units import cm
 from io import BytesIO
 from reportlab.pdfgen import canvas
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+pdfmetrics.registerFont(TTFont("DejaVu", "DejaVuSans.ttf"))
+pdfmetrics.registerFont(TTFont("DejaVu-Bold", "DejaVuSans-Bold.ttf"))
 
 # ===== GREEN & ORANGE PROFESSIONAL THEME =====
 
@@ -274,19 +279,19 @@ def generate_sonatrach_pv(df_results):
 
     styles = getSampleStyleSheet()
 
-    title = ParagraphStyle(
-        fontName="Helvetica-Bold",
-        fontSize=14,
-        alignment=1,
-        spaceAfter=20
-    )
+title = ParagraphStyle(
+    name="Title",
+    fontName="DejaVu-Bold",
+    fontSize=16,
+    spaceAfter=20
+)
 
-    body = ParagraphStyle(
-        fontName="Helvetica",
-        fontSize=11,
-        spaceAfter=10,
-        leading=15
-    )
+
+normal = ParagraphStyle(
+    name="Normal",
+    fontName="DejaVu",
+    fontSize=11
+)
 
     elements = []
 
@@ -379,6 +384,7 @@ st.download_button(
     file_name="PV_Evaluation_SONATRACH.pdf",
     mime="application/pdf"
 )
+
 
 
 
