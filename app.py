@@ -2,6 +2,98 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+# ===== GREEN & ORANGE PROFESSIONAL THEME =====
+
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
+
+st.sidebar.divider()
+st.sidebar.subheader("🎨 Appearance")
+st.session_state.dark_mode = st.sidebar.toggle("Dark Mode", value=st.session_state.dark_mode)
+
+if st.session_state.dark_mode:
+    st.markdown("""
+    <style>
+    .stApp { background-color: #0F172A; color: #E2E8F0; }
+
+    h1, h2, h3, h4 { color: #F8FAFC; }
+
+    .stSidebar { background-color: #064E3B; }
+
+    .stButton>button {
+        background-color: #16A34A;
+        color: white;
+        border-radius: 12px;
+        font-weight: 600;
+        padding: 8px 18px;
+    }
+
+    .stButton>button:hover {
+        background-color: #F97316;
+        color: white;
+    }
+
+    .stDataFrame, .stTable {
+        background-color: #1E293B;
+        border-radius: 12px;
+    }
+
+    .stMetric {
+        background-color: #1E293B;
+        padding: 15px;
+        border-radius: 14px;
+        border-left: 6px solid #16A34A;
+    }
+
+    div[data-testid="stExpander"] {
+        background-color: #1E293B;
+        border-radius: 12px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+else:
+    st.markdown("""
+    <style>
+    .stApp { background-color: #F8FAFC; color: #0F172A; }
+
+    h1, h2, h3, h4 { color: #064E3B; }
+
+    .stSidebar { background-color: #DCFCE7; }
+
+    .stButton>button {
+        background-color: #16A34A;
+        color: white;
+        border-radius: 12px;
+        font-weight: 600;
+        padding: 8px 18px;
+    }
+
+    .stButton>button:hover {
+        background-color: #F97316;
+        color: white;
+    }
+
+    .stDataFrame, .stTable {
+        background-color: white;
+        border-radius: 12px;
+    }
+
+    .stMetric {
+        background-color: white;
+        padding: 15px;
+        border-radius: 14px;
+        border-left: 6px solid #F97316;
+    }
+
+    div[data-testid="stExpander"] {
+        background-color: white;
+        border-radius: 12px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+
 
 st.set_page_config(page_title="Vendor Selection Tool", layout="wide")
 
@@ -147,142 +239,8 @@ st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 
 
-# ================= PROFESSIONAL UI THEME =================
-import streamlit as st
 
-if "dark_mode" not in st.session_state:
-    st.session_state.dark_mode = False
 
-# Toggle in sidebar
-st.sidebar.markdown("## 🎨 Appearance")
-st.session_state.dark_mode = st.sidebar.toggle("Dark Mode", value=st.session_state.dark_mode)
-
-# ---------- HEADER ----------
-st.markdown("""
-<div style="
-    background: linear-gradient(90deg, #16A34A, #F97316);
-    padding: 18px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    color: white;
-    font-size: 26px;
-    font-weight: 700;
-    text-align: center;
-    letter-spacing: 1px;">
-    🚀 Decision Support System – Supplier Evaluation Dashboard
-</div>
-""", unsafe_allow_html=True)
-
-# ---------- THEME ----------
-if st.session_state.dark_mode:
-    st.markdown("""
-    <style>
-    .stApp { background-color: #0F172A; color: #E2E8F0; }
-
-    h1, h2, h3, h4 { color: #F8FAFC; }
-
-    .stSidebar { background-color: #052E16; }
-
-    .block-container {
-        padding-top: 1.5rem;
-    }
-
-    .card {
-        background-color: #1E293B;
-        padding: 18px;
-        border-radius: 18px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-        margin-bottom: 20px;
-    }
-
-    .stButton>button {
-        background: linear-gradient(135deg, #16A34A, #F97316);
-        color: white;
-        border-radius: 14px;
-        font-weight: 600;
-        padding: 10px 22px;
-        border: none;
-    }
-
-    .stButton>button:hover {
-        opacity: 0.9;
-        transform: scale(1.02);
-    }
-
-    .stMetric {
-        background-color: #1E293B;
-        padding: 18px;
-        border-radius: 18px;
-        border-left: 6px solid #16A34A;
-    }
-
-    div[data-testid="stExpander"] {
-        background-color: #1E293B;
-        border-radius: 16px;
-    }
-
-    .stDataFrame {
-        border-radius: 16px;
-        overflow: hidden;
-    }
-
-    </style>
-    """, unsafe_allow_html=True)
-
-else:
-    st.markdown("""
-    <style>
-    .stApp { background-color: #F8FAFC; color: #0F172A; }
-
-    h1, h2, h3, h4 { color: #064E3B; }
-
-    .stSidebar { background-color: #DCFCE7; }
-
-    .block-container {
-        padding-top: 1.5rem;
-    }
-
-    .card {
-        background-color: white;
-        padding: 18px;
-        border-radius: 18px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        margin-bottom: 20px;
-    }
-
-    .stButton>button {
-        background: linear-gradient(135deg, #16A34A, #F97316);
-        color: white;
-        border-radius: 14px;
-        font-weight: 600;
-        padding: 10px 22px;
-        border: none;
-    }
-
-    .stButton>button:hover {
-        opacity: 0.9;
-        transform: scale(1.02);
-    }
-
-    .stMetric {
-        background-color: white;
-        padding: 18px;
-        border-radius: 18px;
-        border-left: 6px solid #F97316;
-    }
-
-    div[data-testid="stExpander"] {
-        background-color: white;
-        border-radius: 16px;
-    }
-
-    .stDataFrame {
-        border-radius: 16px;
-        overflow: hidden;
-    }
-
-    </style>
-    """, unsafe_allow_html=True)
 
 
 
