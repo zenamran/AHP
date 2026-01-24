@@ -252,6 +252,7 @@ st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
 
 #.......PV.........
+# .......PV.........
 def generate_sonatrach_pv(df_results):
     buffer = BytesIO()
 
@@ -265,7 +266,6 @@ def generate_sonatrach_pv(df_results):
         canvas.drawRightString(19*cm, 28.0*cm, "Date : ____ / ____ / 2026")
 
         canvas.line(2*cm, 27.2*cm, 19*cm, 27.2*cm)
-
         canvas.drawRightString(19*cm, 1.2*cm, f"Page {doc.page}")
 
     doc = SimpleDocTemplate(
@@ -279,18 +279,20 @@ def generate_sonatrach_pv(df_results):
 
     styles = getSampleStyleSheet()
 
-
     title = ParagraphStyle(
        name="Title",
        fontName="DejaVu-Bold",
        fontSize=16,
-       spaceAfter=20
+       spaceAfter=20,
+       alignment=1 # للتوسيط
     )
 
-    normal = ParagraphStyle(
+    # تم تغيير التسمية هنا من normal إلى body لتطابق الاستدعاء في الأسفل
+    body = ParagraphStyle(
       name="Normal",
       fontName="DejaVu",
-      fontSize=11
+      fontSize=11,
+      leading=14
     )
 
     elements = []
@@ -305,18 +307,13 @@ def generate_sonatrach_pv(df_results):
 
     # نص إداري رسمي
     text = """
-    L’an deux mille vingt-six et le ____ / ____ / 2026, la commission d’évaluation des offres,
-    dûment constituée conformément aux procédures internes de SONATRACH, s’est réunie au siège
-    de la Direction Approvisionnement afin de procéder à l’analyse et à l’évaluation des offres
-    reçues dans le cadre de la consultation relative à la sélection de fournisseurs.
-
-    L’évaluation a été réalisée selon une méthodologie multicritère reposant sur l’approche
-    Analytic Hierarchy Process (AHP) combinée à une méthode de Scoring pondéré, garantissant
-    l’objectivité, la transparence et la traçabilité du processus de décision.
+    L’an deux mille vingt-six et le ____ / ____ / 2026, la commission d’évaluation des offres...
+    L’évaluation a été réalisée selon une méthodologie multicritère (AHP)...
     """
 
     for line in text.strip().split("\n"):
-        elements.append(Paragraph(line.strip(), body))
+        if line.strip():
+            elements.append(Paragraph(line.strip(), body)) # الآن المتغير body معرف ولن يظهر الخطأ
 
     elements.append(Spacer(1, 15))
 
@@ -384,3 +381,4 @@ st.download_button(
     file_name="PV_Evaluation_SONATRACH.pdf",
     mime="application/pdf"
 )
+
