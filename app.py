@@ -2,6 +2,71 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+# --- DARK MODE TOGGLE ---
+if "dark_mode" not in st.session_state:
+    st.session_state.dark_mode = False
+
+st.sidebar.divider()
+st.sidebar.subheader("🎨 Appearance")
+
+toggle = st.sidebar.checkbox("Dark Mode", value=st.session_state.dark_mode)
+
+st.session_state.dark_mode = toggle
+
+# CSS حسب الوضع
+if st.session_state.dark_mode:
+    st.markdown("""
+    <style>
+    .stApp {
+        background-color: #0e1117;
+        color: white;
+    }
+
+    h1, h2, h3, h4, h5 {
+        color: #fafafa;
+    }
+
+    .stSidebar {
+        background-color: #161b22;
+    }
+
+    .stButton > button {
+        background-color: #238636;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .stDataFrame {
+        background-color: #161b22;
+    }
+
+    </style>
+    """, unsafe_allow_html=True)
+
+else:
+    st.markdown("""
+    <style>
+    .stApp {
+        background-color: #f9f9f9;
+        color: black;
+    }
+
+    h1, h2, h3, h4, h5 {
+        color: #003366;
+    }
+
+    .stSidebar {
+        background-color: #e6eef8;
+    }
+
+    .stButton > button {
+        background-color: #1f77b4;
+        color: white;
+        border-radius: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 
 st.set_page_config(page_title="Vendor Selection Tool", layout="wide")
 
@@ -176,6 +241,7 @@ h1 {
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
