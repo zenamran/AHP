@@ -10,10 +10,10 @@ import matplotlib.pyplot as plt
 #from io import BytesIO
 #from reportlab.pdfgen import canvas
 #from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
+#from reportlab.pdfbase.ttfonts import TTFont
 
-pdfmetrics.registerFont(TTFont("DejaVu", "DejaVuSans.ttf"))
-pdfmetrics.registerFont(TTFont("DejaVu-Bold", "DejaVuSans-Bold.ttf"))
+#pdfmetrics.registerFont(TTFont("DejaVu", "DejaVuSans.ttf"))
+#pdfmetrics.registerFont(TTFont("DejaVu-Bold", "DejaVuSans-Bold.ttf"))
 
 # ===== GREEN & ORANGE PROFESSIONAL THEME =====
 
@@ -250,6 +250,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
