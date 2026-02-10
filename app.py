@@ -2,15 +2,15 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle, Spacer
-from reportlab.lib import colors
-from reportlab.lib.units import cm
-from io import BytesIO
-from reportlab.pdfgen import canvas
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
+#from reportlab.lib.pagesizes import A4
+#from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+#from reportlab.platypus import SimpleDocTemplate, Paragraph, Table, TableStyle, Spacer
+#from reportlab.lib import colors
+#from reportlab.lib.units import cm
+#from io import BytesIO
+#from reportlab.pdfgen import canvas
+#from reportlab.pdfbase import pdfmetrics
+#from reportlab.pdfbase.ttfonts import TTFont
 
 pdfmetrics.registerFont(TTFont("DejaVu", "DejaVuSans.ttf"))
 pdfmetrics.registerFont(TTFont("DejaVu-Bold", "DejaVuSans-Bold.ttf"))
@@ -250,6 +250,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
