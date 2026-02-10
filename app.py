@@ -113,13 +113,13 @@ st.set_page_config(page_title="Vendor Selection Tool", layout="wide")
 st.title("🚀 Decision Support System (DSS)")
 st.subheader("Integrated AHP & Weighted Scoring Model")
 
-# --- 1. SIDEBAR SETTINGS ---
+# --- 1. SIDEBAR SETTINGS ................................................................................
 with st.sidebar:
     st.header("⚙️ General Configuration")
     n_suppliers = st.number_input("Number of Suppliers", min_value=2, max_value=10, value=2)
     n_criteria = st.number_input("Number of Criteria", min_value=2, max_value=10, value=2)
     
-# --- 2. NAMES INPUT ---
+# --- 2. NAMES INPUT...............................................................................................
 col1, col2 = st.columns(2)
 with col1:
     st.subheader("👥 Supplier Names")
@@ -129,7 +129,7 @@ with col2:
     st.subheader("📋 Criteria Names")
     criteria_names = [st.text_input(f"Criterion {j+1}", f"Criterion {j+1}") for j in range(n_criteria)]
 
-# --- 3. AHP COMPARISON MATRIX ---
+# --- 3. AHP COMPARISON MATRIX ............................................................................
 st.divider()
 st.subheader("⚖️ AHP Pairwise Comparison Matrix (Saaty Scale)")
 st.write("Compare the relative importance of criteria (1: Equal, 3: Moderate, 5: Strong, 7: Very Strong, 9: Extreme)")
@@ -142,7 +142,7 @@ for i in range(n_criteria):
         A[i, j] = val
         A[j, i] = 1 / val
 
-# --- 4. PERFORMANCE MATRIX (SCORES) ---
+# --- 4. PERFORMANCE MATRIX (SCORES)...................................................................
 st.divider()
 st.subheader("⭐ Performance Scoring (Scale 0-10)")
 st.write("Enter the raw performance scores for each supplier per criterion.")
@@ -154,7 +154,7 @@ for i in range(n_suppliers):
         for j in range(n_criteria):
             scores_data[i, j] = cols[j].number_input(f"{criteria_names[j]}", 0.0, 10.0, 0.0, key=f"S_{i}_{j}")
 
-# --- 5. MATHEMATICAL CALCULATIONS ---
+# --- 5. MATHEMATICAL CALCULATIONS ...................................................................
 # AHP Weights & Consistency
 eig_vals, eig_vecs = np.linalg.eig(A)
 max_eig = np.real(eig_vals.max())
@@ -166,7 +166,7 @@ RI_table = {1:0, 2:0, 3:0.58, 4:0.90, 5:1.12, 6:1.24, 7:1.32, 8:1.41, 9:1.45, 10
 CI = (max_eig - n_criteria) / (n_criteria - 1)
 CR = CI / RI_table[n_criteria] if n_criteria > 2 else 0
 
-# AHP Method Score
+# AHP Method Score.....................................................................................
 score_ahp_final = np.dot(scores_data, w_ahp)
 # --- 6. RESULTS & OUTPUT ---
 st.divider()
@@ -199,7 +199,7 @@ df_ahp = pd.DataFrame({
 
 st.dataframe(df_ahp, use_container_width=True)
 
-# --- 7. SENSITIVITY ANALYSIS CHART ---
+# --- 7. SENSITIVITY ANALYSIS CHART ---..........................................................
 st.divider()
 st.subheader("📈 Sensitivity Analysis")
 
@@ -219,19 +219,19 @@ for v in variation:
     temp_w = np.copy(w_ahp)
     temp_w[crit_index] = v
 
-    # إعادة توزيع الأوزان على باقي المعايير
+    # Redistribution of weights to the rest of the criteria
     others = [i for i in range(n_criteria) if i != crit_index]
     sum_others = temp_w[others].sum()
 
     if sum_others > 0:
         temp_w[others] = (temp_w[others] / sum_others) * (1 - v)
 
-    # نحفظ نتيجة كل الموردين عند هذا الوزن
+    #  save the result of all suppliers at this weight
     sens_results.append(np.dot(scores_data, temp_w))
 
 sens_results = np.array(sens_results)  # الشكل يصبح (20, n_suppliers)
 
-# الرسم البياني
+# Graphical representation............................................................................................
 fig, ax = plt.subplots(figsize=(10, 5))
 
 for i in range(n_suppliers):
@@ -250,6 +250,7 @@ st.write("---")
 
 st.caption("Developed for Strategic Sourcing and Procurement Analysis.")
 st.caption("Developed by Zennani Amran / Zerguine Moussa.")
+
 
 
 
